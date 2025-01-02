@@ -4,11 +4,12 @@ import 'package:offiql/widgets/user_item.dart';
 import 'package:provider/provider.dart';
 
 class UserList extends StatelessWidget {
-  const UserList({super.key});
+  String searched;
+   UserList(this.searched);
 
   @override
   Widget build(BuildContext context) {
-    final users = Provider.of<Userprovider>(context).users;
+    final users = Provider.of<Userprovider>(context).searchUserByName(searched);
 
     return ListView.builder(
       itemCount: users.length,

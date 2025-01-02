@@ -43,6 +43,13 @@ class Userprovider with ChangeNotifier {
     }
   }
 
-
-  // Future<void> searchUserByName(String query )
+/*function to fetch users by name, return the entire list if there is 
+ nothing in the search bar*/
+ List<UserModel> searchUserByName(String query){                                
+    if (query.isEmpty) return [..._users];
+    final searchresult = _users.where((element) {
+      return element.name!.toLowerCase().contains(query.toLowerCase());
+    },).toList();
+    return searchresult;
+  }
 }
