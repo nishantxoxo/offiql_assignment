@@ -22,7 +22,7 @@ class _UserFormPageState extends State<UserFormPage> {
 
   // Submit function
   void _submitForm() {
-    if (_formKey.currentState!.validate()) {                                           //if the form is validated
+    if (_formKey.currentState!.validate()) {                                                 //if the form is validated
       final users = Provider.of<Userprovider>(context, listen: false);
       final userModel = {
         'id': users.getlength() + 1,                                                          //new user id
@@ -33,10 +33,10 @@ class _UserFormPageState extends State<UserFormPage> {
         'website': _websiteController.text,
       };
 
-      final model = UserModel.fromJson(userModel);                                //convert the json to model
+      final model = UserModel.fromJson(userModel);                                     //convert the json to model
 
-      users.adduser(model);                                                    // call the add user function
-
+      users.adduser(model);                                                           // call the add user function
+ 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('User ${_nameController.text} submitted successfully!'),

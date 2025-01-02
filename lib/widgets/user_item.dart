@@ -24,7 +24,7 @@ class UserItem extends StatelessWidget {
       var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
       var offsetAnimation = animation.drive(tween);
 
-      return SlideTransition(
+      return SlideTransition(                                                                    //slide animation on new page
         position: offsetAnimation,
         child: child,
       );

@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-bool isloading = false;
+bool isloading = false;                                             //to be used to show loading indicator
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         );
         await Provider.of<Userprovider>(context, listen: false)
-            .fetchAndSet(); // fucntion called to get all users from api
+            .fetchAndSet();                                                            // fucntion called to get all users from api
         setState(
           () {
             isloading = false;
@@ -42,23 +42,24 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("USERS"),
       ),
-      body: isloading
+      body: isloading                                                 // show a loading indicator if users are not finished fetching
           ? Center(
               child: CircularProgressIndicator(),
             )
           : UserList(),
       floatingActionButton: CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.blue,
-          child: IconButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserFormPage(),
-                )),
-            icon: Icon(Icons.add),
-            color: Colors.white,
-          )),
+        radius: 30,
+        backgroundColor: Colors.blue,
+        child: IconButton(
+          onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UserFormPage(),                         // a floating action button to transfer user to add user page
+              )),
+          icon: Icon(Icons.add),
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

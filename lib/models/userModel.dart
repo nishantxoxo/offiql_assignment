@@ -20,7 +20,7 @@ class UserModel with ChangeNotifier {
       this.website,
    });
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  UserModel.fromJson(Map<String, dynamic> json) {                                // to convert to a model from json data
     id = json['id'];
     name = json['name'];
     username = json['username'];
@@ -31,7 +31,7 @@ class UserModel with ChangeNotifier {
  
   }
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {                                                // to convert a model into json data
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;

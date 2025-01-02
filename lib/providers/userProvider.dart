@@ -10,34 +10,39 @@ class Userprovider with ChangeNotifier {
 
   List<UserModel> get users {
     return [..._users];
-  }                                     //return a copy of the users
+  }                                                                         //return a copy of the users
 
   int getlength() {
     return _users.length;
-  }                                      //returns the length of user
+  }                                                                         //returns the length of user
 
-  Future<void> fetchAndSet() async {                                       //to get all the users
+  Future<void> fetchAndSet() async {                                         //to get all the users
     final url = 'https://jsonplaceholder.typicode.com/users';
     try {
       final Response = await http.get(Uri.parse(url));                       //fetch the data with a GET request
       final extracted = json.decode(Response.body) as List<dynamic>;                  
-      final List<UserModel> loadedUser = [];                                 // create a local list
+      final List<UserModel> loadedUser = [];                                 
       extracted.forEach(
         (element) {
           loadedUser.add(UserModel.fromJson(element));
         },
       );
 
-      _users = loadedUser;                   
-    } catch (e) {}
+      _users = loadedUser;                                          // make the fetched users as list of users of this class
+    } catch (e) {
+      throw e;
+    } 
   }
 
   Future<void> adduser(UserModel user) async {                   //to add new user
     try {
       _users.add(user);
-      notifyListeners();     //adds new user
+      notifyListeners();                                           //adds new user
     } catch (e) {
       throw e;
     }
   }
+
+
+  // Future<void> searchUserByName(String query )
 }
